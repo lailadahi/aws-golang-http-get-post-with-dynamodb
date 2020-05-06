@@ -46,7 +46,22 @@ functions:
           method: post
     environment:
       IAM_TABLE_NAME: ${self:custom.iamTableName}
- 
+  getAllAccounts:
+    handler: bin/getAllAccounts
+    events:
+      - http:
+          path: accounts
+          method: get
+    environment:
+      IAM_TABLE_NAME: ${self:custom.iamTableName} 
+  getAccount:
+    handler: bin/getAccount
+    events:
+      - http:
+          path: accounts/{username}
+          method: get
+    environment:
+      IAM_TABLE_NAME: ${self:custom.iamTableName}
 resources:
   Resources: 
     iamTable:
@@ -54,8 +69,8 @@ resources:
       Properties:
         TableName: ${self:custom.iamTableName}
         ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
         AttributeDefinitions:
           - AttributeName: user_name
             AttributeType: S

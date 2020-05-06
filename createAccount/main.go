@@ -80,7 +80,7 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	params := &dynamodb.PutItemInput{
 		Item:                item,
 		TableName:           tableName,
-		ConditionExpression: aws.String("attribute_not_exists(Username)"), //If item exists, thow an error
+		ConditionExpression: aws.String("attribute_not_exists(user_name)"), //If item exists, thow an error
 	}
 	// PutItem to the DynamoDB specified above
 	if _, err := svc.PutItem(params); err != nil {
