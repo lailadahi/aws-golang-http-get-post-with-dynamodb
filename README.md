@@ -1,4 +1,8 @@
 # Serverless-golang http Get and Post with DynamoDB resource example 
+
+## Medium post
+[can be found here](https://medium.com/@lailadahi/serverless-service-on-aws-lambda-go-sdk-dynamodb-7551f943d1dc)
+
 ## prerequisites
     - serverless 
     - go
